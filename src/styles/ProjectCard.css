@@ -14,7 +14,8 @@
   overflow: hidden;
   border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
 .project-card-image {
@@ -22,12 +23,26 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .project-card:hover .project-card-image {
   transform: scale(1.08);
-  filter: brightness(0.35);
+}
+
+.project-card:hover::after {
+  opacity: 1;
 }
 
 .project-card-overlay {
@@ -42,6 +57,7 @@
   opacity: 0;
   transition: opacity 0.4s ease;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(35, 17, 35, 0.5) 100%);
+  will-change: opacity;
 }
 
 .project-card:hover .project-card-overlay {

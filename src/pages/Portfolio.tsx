@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import ProjectCard from '../components/ProjectCard';
+import flickerImage from '../assets/F.png';
 import '../styles/Portfolio.css';
 
 interface Project {
@@ -26,14 +27,14 @@ const projects: Project[] = [
   {
     id: '3',
     title: 'Flicker',
-    description: 'A mouse training web app to sharpen your aim and precision.',
-    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=300&fit=crop'
+    description: 'Think your aim is cracked? Jump in and see how many clean headshots you can land under pressure.',
+    image: flickerImage
   }
 ];
 
 const typewriterPhrases = [
   'Turning ideas into software',
-  'Pulling things apart to learn',
+  'Pulling things apart and rebuilding them',
   'Crafting digital experiences'
 ];
 
@@ -144,7 +145,7 @@ export default function Portfolio() {
           <div className="about-content">
             <div className="about-text">
               <p>
-                I spend too much time wondering how things work — and then trying to build them myself. 
+                I spend too much time wondering how things work and then trying to build them myself. 
                 Currently learning, experimenting, and occasionally breaking things along the way.
               </p>
             </div>
@@ -156,7 +157,7 @@ export default function Portfolio() {
                   <li>DevOps</li>
                   <li>Cloud Computing</li>
                   <li>AI</li>
-                  <li>Machine Learning</li>
+                  <li>Software Development</li>
                 </ul>
               </div>
 

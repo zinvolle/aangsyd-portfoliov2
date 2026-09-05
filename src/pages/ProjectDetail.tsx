@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import flickerImage from '../assets/F.png';
 import '../styles/ProjectDetail.css';
 
 interface Project {
@@ -56,37 +58,41 @@ const projectsData: Record<string, Project> = {
       The app is built on .NET Core following clean architecture principles, with a React
       frontend and real-time features powered by SignalR.
     `,
-    technologies: ['.NET Core', 'C#', 'React', 'TypeScript', 'SignalR', 'PostgreSQL'],
-    link: 'https://example.com'
+    technologies: ['.NET Core', 'C#', 'React', 'TypeScript','Entity Framework', 'SignalR', 'PostgreSQL'],
+    link: 'https://amosprojectact.azurewebsites.net/'
   },
   '3': {
     id: '3',
     title: 'Flicker',
-    description: 'A mouse training web app to sharpen your aim and precision.',
-    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&h=400&fit=crop',
-    tags: ['React', 'TypeScript', 'Canvas'],
+    description: 'Lock in your crosshair and test your headshot game with fast target drills and pure click pressure.',
+    image: flickerImage,
+    tags: ['React', 'TypeScript'],
     details: `
-      Flicker is a mouse training web app designed to improve aim, reaction time, and precision
-      through fast-paced target practice.
+      Welcome to your personal aim gauntlet.
+      Snap onto targets, chase those headshots, and see if you can stay icy when the speed cranks up.
 
       Key Features:
-      • Multiple training modes with varying target sizes and speeds
-      • Reaction time and accuracy tracking
-      • Score history to visualise improvement over time
-      • Configurable difficulty settings
-      • Minimal, distraction-free interface
+      • Headshot drills that ramp from warm-up to full sweat mode
+      • Instant reaction-time and accuracy stats after every round
+      • Personal best tracking so you can beat your own high score
+      • Difficulty controls for casual taps or ranked-level pressure
+      • Clean arena visuals so every miss and every flick is on you
 
-      Flicker was built as a fun way to explore browser rendering performance and precise
-      input handling, while helping users level up their mouse control.
+      Whether you are warming up before ranked or just farming clips,
+      Flicker is built to help you practise those headshots until they feel automatic.
     `,
     technologies: ['React', 'TypeScript', 'HTML Canvas', 'CSS Animations', 'Vite'],
-    link: 'https://example.com'
+    link: 'https://zinvolle.github.io/Flicker/'
   }
 };
 
 export default function ProjectDetail() {
   const { id } = useParams();
   const project = id ? projectsData[id] : null;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [id]);
 
   if (!project) {
     return (
@@ -116,9 +122,14 @@ export default function ProjectDetail() {
             <h1 className="project-title">{project.title}</h1>
             <p className="project-subtitle">{project.description}</p>
             {project.link && (
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-button">
-                View Live Project →
-              </a>
+              <>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-button">
+                  View Live Project →
+                </a>
+                {project.id === '2' && (
+                  <p className="project-link-note" style={{fontSize: '14px'}}>May have a cold start. Please wait a minute for the container to start.</p>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -128,7 +139,7 @@ export default function ProjectDetail() {
       <section className="project-details">
         <div className="details-container">
           <div className="details-main">
-            <h2>Project Overview</h2>
+            <h2>{project.id === '3' ? 'Headshot Challenge' : 'Project Overview'}</h2>
             <div className="project-description">
               {project.details.split('\n').map((paragraph, index) => (
                 paragraph.trim() && (
@@ -140,7 +151,7 @@ export default function ProjectDetail() {
 
           <aside className="details-sidebar">
             <div className="sidebar-card technologies-card">
-              <h3>Technologies</h3>
+              <h3>Stack</h3>
               <div className="tech-list">
                 {project.technologies.map((tech) => (
                   <span key={tech} className="tech-tag">{tech}</span>
@@ -164,13 +175,19 @@ export default function ProjectDetail() {
       <section className="project-cta">
         <h2>Interested in working together?</h2>
         <p>Let's create something amazing</p>
-        <button className="cta-button">Get In Touch</button>
+        <a
+          href="https://www.linkedin.com/in/amos-ang-3106aa282/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta-button"
+        >
+          Get In Touch
+        </a>
       </section>
 
       {/* Footer */}
       <footer className="project-footer">
         <div className="footer-content">
-          <p>&copy; 2024 My Portfolio. All rights reserved.</p>
         </div>
       </footer>
     </div>
