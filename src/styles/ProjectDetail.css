@@ -120,7 +120,7 @@
 
 .project-subtitle {
   font-size: 1.2rem;
-  color: rgba(224, 224, 224, 0.8);
+  color: rgba(224, 224, 224, 0.92);
   line-height: 1.6;
 }
 
@@ -153,7 +153,7 @@
 .project-link-note {
   margin-top: -0.75rem;
   font-size: 0.82rem;
-  color: rgba(224, 224, 224, 0.65);
+  color: rgba(224, 224, 224, 0.82);
 }
 
 /* Details Section */
@@ -187,7 +187,7 @@
 
 .project-description p {
   margin-bottom: 1.5rem;
-  color: rgba(224, 224, 224, 0.85);
+  color: rgba(224, 224, 224, 0.95);
   line-height: 1.8;
   font-size: 1rem;
 }
@@ -201,7 +201,7 @@
   padding-left: 1.5rem;
   margin-bottom: 0.7rem;
   position: relative;
-  color: rgba(224, 224, 224, 0.8);
+  color: rgba(224, 224, 224, 0.92);
 }
 
 .project-description li::before {
@@ -297,7 +297,7 @@
 
 .project-cta p {
   font-size: 1.1rem;
-  color: rgba(224, 224, 224, 0.7);
+  color: rgba(224, 224, 224, 0.9);
   margin-bottom: 2rem;
 }
 
@@ -320,7 +320,7 @@
 }
 
 .project-footer .footer-content {
-  color: rgba(224, 224, 224, 0.6);
+  color: rgba(224, 224, 224, 0.82);
   font-size: 0.9rem;
 }
 
