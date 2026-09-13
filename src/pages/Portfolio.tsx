@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import flickerImage from '../assets/F.png';
+import auditRImage from '../assets/AuditR.png';
+import socialActivitiesImage from '../assets/SocialActivities.jpg';
 import '../styles/Portfolio.css';
 
 interface Project {
@@ -16,13 +18,13 @@ const projects: Project[] = [
     id: '1',
     title: 'AuditR',
     description: 'A .NET + React app for running user access reviews across applications in an organisation.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop'
+    image: auditRImage
   },
   {
     id: '2',
     title: 'SocialActivities',
     description: 'A social media web app built on .NET Core and React.',
-    image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=500&h=300&fit=crop'
+    image: socialActivitiesImage
   },
   {
     id: '3',
