@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import flickerImage from '../assets/F.png';
 import auditRImage from '../assets/AuditR.png';
-import socialActivitiesImage from '../assets/SocialActivities.jpg';
+import sproutsImage from '../assets/Sprouts.png';
 import '../styles/Portfolio.css';
 
 interface Project {
@@ -22,9 +22,9 @@ const projects: Project[] = [
   },
   {
     id: '2',
-    title: 'SocialActivities',
+    title: 'Sprouts',
     description: 'A social media web app built on .NET Core and React.',
-    image: socialActivitiesImage
+    image: sproutsImage
   },
   {
     id: '3',

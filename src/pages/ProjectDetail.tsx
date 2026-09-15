@@ -1,6 +1,13 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import flickerImage from '../assets/F.png';
+import sproutsImage from '../assets/Sprouts.png';
+import auditRImage from '../assets/AuditR.png';
+import AuditR1 from '../assets/AuditR1.png';
+import AuditR2 from '../assets/AuditR2.png';
+import AuditR4 from '../assets/AuditR4.png';
+import Carousel from '../components/Carousel';
+import type { CarouselItem } from '../components/Carousel';
 import '../styles/ProjectDetail.css';
 
 interface Project {
@@ -12,6 +19,8 @@ interface Project {
   details: string;
   technologies: string[];
   link?: string;
+  githubLink?: string;
+  media?: CarouselItem[];
 }
 
 const projectsData: Record<string, Project> = {
@@ -19,7 +28,7 @@ const projectsData: Record<string, Project> = {
     id: '1',
     title: 'AuditR',
     description: 'A .NET + React app for running user access reviews across applications in an organisation.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+    image: auditRImage,
     tags: ['.NET', 'React', 'Security'],
     details: `
       AuditR streamlines user access reviews across an organisation's applications. It gives
@@ -36,16 +45,22 @@ const projectsData: Record<string, Project> = {
       reviews fast, traceable, and painless for both reviewers and administrators.
     `,
     technologies: ['.NET', 'C#', 'React', 'TypeScript', 'SQL Server', 'Entity Framework'],
-    link: 'https://example.com'
+    githubLink: 'https://github.com/zinvolle/auditr',
+    media: [
+      { type: 'image', src: AuditR2, alt: 'Screenshot 1' },
+      { type: 'image', src: AuditR1, alt: 'Screenshot 2' },
+      { type: 'image', src: AuditR4, alt: 'Screenshot 3' },
+      { type: 'video', src: 'https://www.youtube.com/embed/bXCDAXxFtHw', alt: 'AuditR demo video' }
+    ]
   },
   '2': {
     id: '2',
-    title: 'SocialActivities',
+    title: 'Sprouts',
     description: 'A social media web app built on .NET Core and React.',
-    image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&h=400&fit=crop',
+    image: sproutsImage,
     tags: ['.NET Core', 'React', 'SignalR'],
     details: `
-      SocialActivities is a social media web application where users can create, discover, and
+      Sprouts is a social media web application where users can create, discover, and
       join activities with other people.
 
       Key Features:
@@ -56,7 +71,7 @@ const projectsData: Record<string, Project> = {
       • Attendance tracking for each activity
 
       The app is built on .NET Core following clean architecture principles, with a React
-      frontend and real-time features powered by SignalR.
+      frontend and real-time features using SignalR.
     `,
     technologies: ['.NET Core', 'C#', 'React', 'TypeScript','Entity Framework', 'SignalR', 'PostgreSQL'],
     link: 'https://amosprojectact.azurewebsites.net/'
@@ -79,7 +94,7 @@ const projectsData: Record<string, Project> = {
       • Clean arena visuals so every miss and every flick is on you
 
       Whether you are warming up before ranked or just farming clips,
-      Flicker is built to help you practise those headshots until they feel automatic.
+      Flicker is built to help you practice those headshots until they become muscle memory.
     `,
     technologies: ['React', 'TypeScript', 'HTML Canvas', 'CSS Animations', 'Vite'],
     link: 'https://zinvolle.github.io/Flicker/'
@@ -121,7 +136,7 @@ export default function ProjectDetail() {
           <div className="project-hero-text">
             <h1 className="project-title">{project.title}</h1>
             <p className="project-subtitle">{project.description}</p>
-            {project.link && (
+            {project.link ? (
               <>
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-button">
                   View Live Project →
@@ -130,6 +145,10 @@ export default function ProjectDetail() {
                   <p className="project-link-note" style={{fontSize: '14px'}}>May have a cold start. Please wait a minute for the container to start.</p>
                 )}
               </>
+            ) : project.githubLink && (
+              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="project-link-button">
+                View GitHub →
+              </a>
             )}
           </div>
         </div>
@@ -169,6 +188,13 @@ export default function ProjectDetail() {
             </div>
           </aside>
         </div>
+
+        {project.media && project.media.length > 0 && (
+          <div className="project-gallery">
+            <h2>Gallery</h2>
+            <Carousel items={project.media} />
+          </div>
+        )}
       </section>
 
       {/* CTA Section */}
